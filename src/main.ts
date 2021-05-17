@@ -1,5 +1,7 @@
-import { createApp, AppConfig } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-//Vue.config.devtools = process.env.NODE_ENV === 'development'
+import { store } from './store'
 
-const app = createApp(App).mount('#app')
+createApp(App)
+.use(store)
+.mount('#app')

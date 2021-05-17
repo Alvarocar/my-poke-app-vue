@@ -1,20 +1,23 @@
 <template>
   <ul>
     <li>prueba</li>
-    <li v-for="pokemon in pokemons" :key="pokemon.id">
-      {{pokemon}}
-    </li>
+    {{pokemons}}
   </ul>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, reactive } from 'vue'
-import pokeRepository from '../service/repository/pokeRepository'
-import { Pokemon } from '../types/pokeTypes'
+import { computed, defineComponent, onBeforeMount } from 'vue'
+import { useStore } from '../store'
+import { ActionTypes as PokeActions } from '../store/modules/pokemons/action-types'
 export default defineComponent({
   name: 'HelloWorld',
-  methods: {
-
+  setup() {
+    const { getters, dispatch } = useStore()
+    onBeforeMount(() => {
+      dispatch(PokeActions.FETCH_POKEMONS, 0)
+    })
+    const pokemons = computed(() => getters.getPokemons)
+    return { pokemons }
   }
 })
 </script>
