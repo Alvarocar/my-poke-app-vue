@@ -9,7 +9,7 @@ import { State } from "./state";
 type PokeActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
-    payload: Parameters<Mutations[K]>[1]
+    payload?: Parameters<Mutations[K]>[1]
   ): ReturnType<Mutations[K]>
 } & Omit<ActionContext<State, RootState>, 'commit'>
 
@@ -25,10 +25,13 @@ const pokeRepo = new pokeRepository()
 export const actions: ActionTree<State, RootState> & Actions = {
   async [ActionTypes.FETCH_POKEMONS]({ commit }, page: number) {
     try {
+      commit(MutationTypes.START_LOADING)
       const pokemons = await pokeRepo.getPokeList(page)
       commit(MutationTypes.SET_DATA, pokemons)
     } catch (error) {
       throw new Error(error.message)
+    } finally {
+      commit(MutationTypes.STOP_LOADING)
     }
   }
 }

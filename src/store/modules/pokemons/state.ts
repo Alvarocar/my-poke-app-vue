@@ -1,9 +1,11 @@
 import { Pokemon } from "../../../types/pokeTypes";
 
 export type State = {
-    pokemons: Pokemon[]
+    pokemons: Pokemon[],
+    isLoading: boolean
 }
 
 export const state: State = {
-    pokemons: []
+    pokemons: [],
+    isLoading: false
 }

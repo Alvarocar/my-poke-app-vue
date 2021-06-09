@@ -42,6 +42,7 @@ export default defineComponent({
     height: 25rem;
     border-radius: 10px;
     box-shadow: 5px 2px 5px 0px grey;
+    text-align: center;
   }
 
    .card-img-section {
