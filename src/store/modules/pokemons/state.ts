@@ -1,11 +1,13 @@
-import { Pokemon } from "../../../types/pokeTypes";
+import { Pokemon } from "../../../model/pokeTypes";
 
 export type State = {
     pokemons: Pokemon[],
-    isLoading: boolean
+    isLoading: boolean,
+    searchedPokemon: Pokemon | null
 }
 
 export const state: State = {
     pokemons: [],
-    isLoading: false
+    isLoading: false,
+    searchedPokemon: null
 }

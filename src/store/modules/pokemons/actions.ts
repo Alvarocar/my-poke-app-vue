@@ -18,6 +18,10 @@ export interface Actions {
     { commit }: PokeActionContext,
     page: number
   ): Promise<void>
+  [ActionTypes.SEARCH_POKEMON](
+    { commit }: PokeActionContext,
+    name: string
+  ): Promise<void>
 }
 
 const pokeRepo = new pokeRepository()
@@ -31,6 +35,19 @@ export const actions: ActionTree<State, RootState> & Actions = {
     } catch (error) {
       throw new Error(error.message)
     } finally {
+      commit(MutationTypes.STOP_LOADING)
+    }
+  },
+  async [ActionTypes.SEARCH_POKEMON]({ commit }, name: string): Promise<void> {
+    try {
+      commit(MutationTypes.START_LOADING)
+      const pokemon = await pokeRepo.searchPokemon(name)
+      commit(MutationTypes.SEARCHED_POKEMON, pokemon)
+    }
+    catch (error) {
+      throw new Error(error.message)
+    }
+    finally {
       commit(MutationTypes.STOP_LOADING)
     }
   }

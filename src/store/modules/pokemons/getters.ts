@@ -1,6 +1,6 @@
 import { GetterTree } from "vuex";
 import { RootState } from "../..";
-import { Pokemon } from "../../../types/pokeTypes";
+import { Pokemon } from "../../../model/pokeTypes";
 import { State } from "./state";
 
 export type Getters = {

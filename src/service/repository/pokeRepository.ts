@@ -1,5 +1,5 @@
 import pokeAxios from '../../api/pokeAxios'
-import { Pokemon } from '../../types/pokeTypes'
+import { Pokemon } from '../../model/pokeTypes'
 
 export default class pokeRepository {
   
@@ -17,10 +17,22 @@ export default class pokeRepository {
     try {
       for (let i = (page*limit) + 1; i <= (page + 1)*limit; i++) {
         pokemons = [...pokemons, 
-         await (await pokeAxios.get(`/pokemon/${i}`)).data
+         await (await pokeAxios.get<Pokemon>(`/pokemon/${i}`)).data
         ]
       }
       return pokemons
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
+  /**
+   * The method search a pokemon by name, if the pokemon doesn't exist
+   * the method throws an error.
+   * @param name Pokemon's name
+   */
+  async searchPokemon(name: string): Promise<Pokemon> {
+    try {
+      return ( await pokeAxios.get<Pokemon>(`/pokemon/${name}`)).data
     } catch (error) {
       throw new Error(error.message)
     }

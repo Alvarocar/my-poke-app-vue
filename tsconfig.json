@@ -15,5 +15,5 @@
       "@src/*": ["./*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/page/HomeView.vue", "src/page/home/HomeView.vue", "src/components/common/PokemonCard.vue", "src/components/containers/PokemonList.vue", "src/components/common/LoadPokemonsButton.vue", "src/page/HomeView.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

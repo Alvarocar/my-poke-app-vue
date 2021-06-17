@@ -1,12 +1,13 @@
 <template>
-  <home-view />
+  <NavBar />
+  <router-view />
 </template>
 <script lang='ts'>
 import { defineComponent } from 'vue'
-import HomeView from '@src/pages/HomeView.vue'
+import NavBar from '@src/components/molecules/NavBar.vue'
 
 export default defineComponent({
   name: 'MainLayout',
-  components: { HomeView }
+  components: { NavBar }
 })
 </script>

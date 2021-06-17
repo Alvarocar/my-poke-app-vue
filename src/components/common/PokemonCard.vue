@@ -7,10 +7,6 @@
         <span class="card-pokemon-exp">{{exp}} exp</span>
       </figcaption>
     </figure>
-    <hr/>
-    <footer class="card-footer">
-      <button class="card-button">Details</button>
-    </footer>
   </section>
 </template>
 <script lang="ts">
@@ -73,23 +69,5 @@ export default defineComponent({
   .card-pokemon-exp {
     opacity: 0.6;
   }
-  
-  .card-button {
-    padding: 0.2rem 0.5rem;
-    font-family: pokemon;
-    width: 8rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #FFDE00;
-    transition: background-color 0.5s;
-  }
 
-  .card-button:hover {
-    background-color: #d4c033;
-  }
-
-  .card-footer {
-    padding: 0.5rem 2rem;
-  }
 </style>
