@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex'
-import { Pokemon } from '../../../types/pokeTypes'
+import { Pokemon } from '../../../model/pokeTypes'
 import { MutationTypes } from './mutation-types'
 import { State } from './state'
 
