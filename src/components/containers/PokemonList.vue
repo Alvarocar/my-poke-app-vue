@@ -22,11 +22,12 @@ export default defineComponent({
     name: 'PokemonList',
     setup() {
     const { getters, dispatch } = useStore()
-    onBeforeMount(() => {
-      dispatch(PokeActions.FETCH_POKEMONS, 0)
-    })
     const pokemons = computed(() => getters.getPokemons)
     const isLoading = computed(() => getters.getLoadingState)
+    onBeforeMount(() => {
+      if (pokemons.value.length == 0)
+        dispatch(PokeActions.FETCH_POKEMONS, 0)
+    })
     return { pokemons, isLoading }
   },
   components: {
