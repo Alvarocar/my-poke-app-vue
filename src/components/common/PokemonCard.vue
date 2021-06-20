@@ -2,7 +2,7 @@
   <section class="card">
     <figure class="card-img-section">
       <img :src="srcImage" :alt="name">
-      <figcaption>
+      <figcaption class="card-info-pokemon">
         <span class="card-pokemon-name">{{name}}</span>
         <span class="card-pokemon-exp">{{exp}} exp</span>
       </figcaption>
@@ -34,34 +34,37 @@ export default defineComponent({
 <style scoped>
   .card {
     background-color: #f5f7ea;
-    width: 20rem;
-    height: 25rem;
+    width: 15rem;
+    height: 15rem;
     border-radius: 10px;
     box-shadow: 5px 2px 5px 0px grey;
     text-align: center;
+    padding-top: 1rem;
+  }
+  .card-img-section {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 
-   .card-img-section {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-    padding-top: 2rem;
-    border-radius: 10px;
-    height: 6rem;
-    margin-bottom: 13rem;
-    background-color: var(--color-red-card)
+  .card-info-pokemon {
+    font-family: monospace;
+    color: white;
+    background-color: #ff0000;
+    align-self: stretch;
+    padding: 1rem .8rem;
   }
-
   .card-img-section > img {
-    width: 12rem;
-    height: 12rem;
-    background-color: white;
+    width: 8rem;
+    height: auto;
+    /* background-color: white; */
     border-radius: 50%;
   }
 
   .card-pokemon-name {
-    font-family: pokemon;
     font-size: 2rem;
     display: block;
   }

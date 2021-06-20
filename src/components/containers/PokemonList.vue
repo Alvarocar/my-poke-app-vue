@@ -4,12 +4,19 @@
       <pokemon-card
         :name="pokemon.name"
         :exp="pokemon.base_experience" 
-        :srcImage="pokemon.sprites.other.dream_world.front_default"/>
+        :srcImage="pokemon.sprites.front_default"/>
     </li>
   </ul>
   <div v-if="isLoading" class="container-spinner">
     <pokemon-spinner/>
   </div>
+  <section class="load-pokemons-section" v-show="!isLoading">
+    <button 
+      class="load-pokemons-button"
+      @click="loadPokemons"
+      >Show more</button>
+  </section>
+
 </template>
 <script lang="ts">
 import { computed, defineComponent, onBeforeMount } from 'vue'
@@ -26,9 +33,12 @@ export default defineComponent({
     const isLoading = computed(() => getters.getLoadingState)
     onBeforeMount(() => {
       if (pokemons.value.length == 0)
-        dispatch(PokeActions.FETCH_POKEMONS, 0)
+        loadPokemons()
     })
-    return { pokemons, isLoading }
+    const loadPokemons = () => {
+      dispatch(PokeActions.FETCH_POKEMONS)
+    }
+    return { pokemons, isLoading, loadPokemons }
   },
   components: {
     PokemonCard,
@@ -40,10 +50,11 @@ export default defineComponent({
 <style scoped>
   ul {
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 12rem, 1fr ));    
+    column-gap: 4rem;
+    justify-items: center;
+    padding: 0 4rem;
   }
 
   li {
@@ -54,5 +65,26 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .load-pokemons-section {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 2rem;
+    font-family: monospace;
+    font-size: 2rem;
+  }
+
+  .load-pokemons-button {
+    padding: 0.7rem 3rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:#FFDE00;
+    transition: background-color 0.5s;
+  }
+
+  .load-pokemons-button:hover {
+    background-color: #d4c033;
   }
 </style>

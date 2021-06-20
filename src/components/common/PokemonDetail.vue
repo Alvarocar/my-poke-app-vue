@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Pokemon } from '@src/model/pokeTypes'
+import { Pokemon } from '@src/model/dto/PokemonDto'
 import { defineComponent, PropType, computed, ref } from 'vue'
 
 export default defineComponent({

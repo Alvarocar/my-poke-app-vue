@@ -15,8 +15,7 @@ type PokeActionContext = {
 
 export interface Actions {
   [ActionTypes.FETCH_POKEMONS](
-    { commit }: PokeActionContext,
-    page: number
+    { commit }: PokeActionContext
   ): Promise<void>
   [ActionTypes.SEARCH_POKEMON](
     { commit }: PokeActionContext,
@@ -27,11 +26,13 @@ export interface Actions {
 const pokeRepo = new pokeRepository()
 
 export const actions: ActionTree<State, RootState> & Actions = {
-  async [ActionTypes.FETCH_POKEMONS]({ commit }, page: number) {
+  async [ActionTypes.FETCH_POKEMONS]({ commit, state }) {
     try {
       commit(MutationTypes.START_LOADING)
-      const pokemons = await pokeRepo.getPokeList(page)
-      commit(MutationTypes.SET_DATA, pokemons)
+      const resp = await pokeRepo.getPokeList(state.page)
+      commit(MutationTypes.SET_DATA, resp.pokemons)
+      commit(MutationTypes.SET_TOTALPAGES, resp.totalPages)
+      commit(MutationTypes.NEXT_PAGE)
     } catch (error) {
       throw new Error(error.message)
     } finally {

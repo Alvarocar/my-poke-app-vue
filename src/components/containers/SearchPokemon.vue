@@ -25,17 +25,15 @@ export default defineComponent({
       onBeforeMount(() => {
         if (props.pokemonName)
           dispatch(ActionTypes.SEARCH_POKEMON, props.pokemonName)
-          .catch( () => {
-            notFound.value = true
-          })
+          .then(() => { notFound.value = false })
+          .catch( () => { notFound.value = true })
       })
       watch(() => props.pokemonName,
       (pokemonName) => {
         if (pokemonName)
           dispatch(ActionTypes.SEARCH_POKEMON, pokemonName)
-          .catch( () => {
-            notFound.value = true
-          })
+          .then(() => { notFound.value = false })
+          .catch( () => { notFound.value = true })
       })
       const searchedPokemon = computed(() => pokemons.searchedPokemon )
       const isLoading = computed(() => getters.getLoadingState )
