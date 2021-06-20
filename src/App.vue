@@ -12,8 +12,7 @@ export default defineComponent({
 
 <style>
   :root {
-    @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
-    --color-red-card: #ff0000
+    --color-red-card: #ff0000;
   }
   body {
     margin: 0;
