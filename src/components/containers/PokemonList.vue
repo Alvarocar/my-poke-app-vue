@@ -1,10 +1,12 @@
 <template>
   <ul>
     <li v-for="pokemon in pokemons" :key="pokemon.id">
+    <router-link class="pokemon-link" :to="{ name: 'PokemonDetail', params: { name: pokemon.name } }">
       <pokemon-card
         :name="pokemon.name"
         :exp="pokemon.base_experience" 
         :srcImage="pokemon.sprites.front_default"/>
+    </router-link>
     </li>
   </ul>
   <div v-if="isLoading" class="container-spinner">
@@ -19,7 +21,7 @@
 
 </template>
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount } from 'vue'
+import { computed, defineComponent, onBeforeMount, PropType } from 'vue'
 import { useStore } from '@src/store'
 import { ActionTypes as PokeActions } from '../../store/modules/pokemons/action-types'
 import PokemonCard from '../common/PokemonCard.vue'
@@ -59,6 +61,10 @@ export default defineComponent({
 
   li {
     margin: 1rem 1rem;
+  }
+
+  .pokemon-link {
+    text-decoration: none;
   }
 
   .container-spinner {

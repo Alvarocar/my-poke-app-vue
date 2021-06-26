@@ -1,4 +1,4 @@
-import { Router, RouteRecordRaw } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -12,10 +12,15 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@src/pages/HomeView.vue')
       },
       {
-        path: '/search',
+        path: 'search',
         name: 'Search',
         component: () => import('@src/pages/SearchView.vue'),
         props: route => ({ q: route.query.q })
+      },
+      {
+        path: 'pokemon/:name',
+        name: 'PokemonDetail',
+        component: () => import('@src/pages/PokemonView.vue')
       }
     ]
   },

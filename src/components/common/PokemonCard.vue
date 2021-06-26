@@ -1,7 +1,7 @@
 <template>
   <section class="card">
     <figure class="card-img-section">
-      <img :src="srcImage" :alt="name">
+      <img :src="srcImage" :alt="name" />
       <figcaption class="card-info-pokemon">
         <span class="card-pokemon-name">{{name}}</span>
         <span class="card-pokemon-exp">{{exp}} exp</span>
