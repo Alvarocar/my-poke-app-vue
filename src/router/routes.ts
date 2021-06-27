@@ -28,6 +28,6 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/404',
     alias: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () => import('@src/pages/NotFound.vue')
+    component: () => import('@src/pages/NotFoundView.vue')
   }
 ]

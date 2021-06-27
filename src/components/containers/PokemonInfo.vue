@@ -1,5 +1,7 @@
 <template>
-  <div v-if="error"><h2>Not Found</h2></div>
+  <main class="container-error" v-if="error">
+    <not-found />
+  </main>
   <main class="container" v-else>
     <pokemon-detail :pokemon="pokemon" v-show="!isLoading"/>
     <pokemon-spinner v-show="isLoading"/>
@@ -14,6 +16,7 @@ import { useRouter } from 'vue-router'
 import PokemonDetail from '@src/components/common/PokemonDetail.vue'
 import usePokemon from '@src/components/hooks/usePokemon'
 import PokemonSpinner from '@src/components/common/PokemonSpinner.vue'
+import NotFound from '@src/components/containers/NotFound.vue'
 
 export default defineComponent({
   name: 'PokemonInfo',
@@ -63,7 +66,8 @@ export default defineComponent({
   },
   components: {
     PokemonDetail,
-    PokemonSpinner
+    PokemonSpinner,
+    NotFound
   }
 })
 </script>
@@ -73,5 +77,11 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.container-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>
