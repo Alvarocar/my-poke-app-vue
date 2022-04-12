@@ -1,5 +1,7 @@
 <template>
-  <pokemon-list />
+  <main>
+    <pokemon-list />
+  </main>
 </template>
 
 <script lang="ts">

@@ -57,12 +57,13 @@ export default defineComponent({
     column-gap: 4rem;
     justify-items: center;
     padding: 0 4rem;
+    margin: 0 auto;
   }
 
   li {
     margin: 1rem 1rem;
   }
-
+  
   .pokemon-link {
     text-decoration: none;
   }

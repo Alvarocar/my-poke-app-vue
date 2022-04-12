@@ -22,4 +22,8 @@ export default defineComponent({
   body {
     margin: 0;
   }
+  #app {
+    position: absolute;
+    min-width: 100vw;
+  }
 </style>

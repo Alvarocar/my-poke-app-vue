@@ -35,6 +35,8 @@ export default defineComponent({
     position: sticky;
     top: 0;
     z-index: 1;
+    display: table;
+    min-width: 100%;
   }
   .nav {
     display: flex;
@@ -74,5 +76,17 @@ export default defineComponent({
     cursor: pointer;
     background-color: #1A1A1A;
     color: #FFFFFF;
+  }
+
+  @media screen and (max-width: 480px) {
+    .nav {
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 0 4rem;
+    }
+    .search-pokemon {
+      margin: 0;
+    }
   }
 </style>
